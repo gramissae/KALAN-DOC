@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        body{
+            font-family:Calibri;
+        }
+        .container{
+            
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .content {
+            display: block;
+            position: relative;
+            padding: 20px;
+            max-width: 70%;
+            height: 100%;
+        }
+        .box{
+            width: 1000;
+            height: 100%;
+        }
+        .card{
+            padding: 20px;
+            box-shadow: 5px 10px 10px #888;
+            border-radius: 5px;
+        }
+        .code{
+            padding: 20px;
+            background: #333;
+            color: chartreuse;
+            font-family: consolas;
+            font-size: 15px;
+            border-radius: 20px;
+        }
+        .coment{
+            color: #999;
+        }
+        .boxlist{
+            width: 200px;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .colorix{
+            background:linear-gradient(to right, #00c6ff, #0072ff); 
+        }
+
+        .colorix_1{
+            background:#efefef;
+        }
+        li a {
+            display: block;
+            font-weight: bold;
+            color: #fff;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            border-radius: 10px;
+            background-color: #555;
+            color: white;
+        }
+        .mini{
+            font-size: 10px;
+            font-weight: initial;
+        }
+        .menu{
+            height: 100%;
+            max-width: 30%;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <div class="menu">
+            <ul class="boxlist" style="color: #333">
+                <li><img src="/svg/cookie.svg" height="60px"/></li>
+                <li>
+                    <h2>KALAN Documentacion Desarrollo<br/>
+                    <b class="mini">Developer by Gino Missael Romero Andriano</b>
+                </h2>
+            </li>
+            </ul>
+            <ul class="colorix">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/methods.html">Catalogo</a></li>
+                <li><a href="./post.html">Metodo POST</a></li>
+                <li><a href="./get.html">Metodo GET</a></li>
+                <li><a href="./put.html">Metodo PUT</a></li>
+                <li><a href="https://github.com/gramissae/KALAN-DOC/tree/master">GITHUB</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="box">
+            <div class="card">
+            <h2>
+                Consulta Viaje
+            </h2>
+            <hr/>
+            <p>
+                En el siguiente tutorial se explica mediante ejemplos las solicitudes que se proponen a desarrollar 
+                por lo cual sera nesesario colocar los siguientes codigos de ejemplo.
+            </p>
+            <div>
+                <form>
+                    <p>Numero de viaje (ej: TCE99990000)</p>
+                    <input type="text" placeholder="Viaje" />
+                    <button>
+                        Enviar
+                    </button>
+                </form>
+                <b>Respuesta API</b>
+                <div>
+
+                </div>
+            </div>
+            </div>
+            
+        </div>
+        </div>
+        </div>
+    </body>
+</html>
