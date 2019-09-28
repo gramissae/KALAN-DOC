@@ -5,6 +5,28 @@
         body{
             font-family:Calibri;
         }
+        input{
+            border: none;
+            padding: 10px;
+            background: #bbb;
+            border-radius: 20px;
+        }
+        button{
+            box-shadow: 0px 2px 5px #555;
+            font-family: arial;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background: #0072ff;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        button:hover{
+            background: #0062cc;
+        }
         .container{
             
             display: flex;
@@ -89,102 +111,39 @@
             </li>
             </ul>
             <ul class="colorix">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="./methods.html">Catalogo</a></li>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/methods.html">Catalogo</a></li>
                 <li><a href="./post.html">Metodo POST</a></li>
                 <li><a href="./get.html">Metodo GET</a></li>
-                <li><a href="./put.html">Metodo PUT</a></li>
                 <li><a href="https://github.com/gramissae/KALAN-DOC/tree/master">GITHUB</a></li>
             </ul>
         </div>
         <div class="content">
             <div class="box">
-            <div class="card">
-            <h2>
-                Consultas
-            </h2>
-            <hr/>
-            <p>
-                En el siguiente tutorial se explica mediante ejemplos las solicitudes que se proponen a desarrollar 
-                por lo cual sera nesesario colocar los siguientes codigos de ejemplo.
-            </p>
-            <p class="code">
-                <b class="coment">
-                    /* Realizo un ejemplo de solicitud basado en fetch pero es posible usar:
-                    <br/>&emsp;&emsp;- Axios
-                    <br/>&emsp;&emsp;- HttpxmlRequest
-                    <br/>&emsp;&emsp;- JQuery
-                    <br/>*/
-                    <br/>
-                </b>
-                fetch([RUTA A INGRESAR DE API ], {<br/>
-                    &emsp;&emsp;method: [GET, POST, PUT], <b class="coment">// Colocar cualquiera de los tipos de consulta</b><br/>
-                    &emsp;&emsp;headers:
-                <br/>&emsp;})<br/>
-                .then(res => res.json())<br/>
-                .then(data => console.log(data))<br/>
-                .catch(error => console.errror(error))<br/>
-            </p>
-            <p>
-                Se habilitaran todos los servicios REST en el apartado <b>http://[URL]/service/api/[RUTA]</b>
-            </p>
+                    <div class="card">
+                    <h2>
+                        Enviar Status de folio
+                    </h2>
+                    <hr/>
+                    <p>
+                        En el siguiente tutorial se explica mediante ejemplos las solicitudes que se proponen a desarrollar 
+                        por lo cual sera nesesario colocar los siguientes codigos de ejemplo.
+                    </p>
+                    </div>
             </div>
-            <div class="card">
-                <h2>
-                    Requisitos
-                </h2>
-                <hr/>
-                <p>
-                    Solicita a tu Apikey para poder comenzar tu ingreso y poder geneara el token dinamico para cada solicitud via API la cualquiera
-                    se te otorgara para agilizar y validad la identidad de cada envio de informacion.
-                </p>
-                <p>Es nesesario tener un desarrollo basado en las con las siguientes caracteristicas:</p>
-                <ul>
-                    <li>- JWT - <b>https://jwt.io/</b></li>
-                    <li>- Protocolo de JWT basado en SHA - 256</li>
-                    <li>- Clave de intercambio secreta Otrogada por el cliente (Secret para cruzar autentificacion <b>#Archivo Api.js</b>)</li>
-                    <li>- Metodo de autentificacion local para con arquitectura opitmizada para ApiRest</li>
-                </ul>
+            <div class="box">
+                    <div class="card">
+                    <h2>
+                        Enviar Alertas
+                    </h2>
+                    <hr/>
+                    <p>
+                        En este apatado se pone a propuesta el mejorar la plataforma con las nesecidades de 
+                        enviar mensajes mediante APIRest o gracias a la integracion de <b>Sockets</b>.<br>
+                        <br>Si deseas saber mas puedes consultar la libreria <a href="https://socket.io/">Socket.io</a>.
+                    </p>
+                    </div>
             </div>
-            <div class="card">
-                <h2>
-                    Generacion de encabezados
-                </h2>
-                <hr/>
-                <p>
-                    En cada solicitud es necesario para que nuestras Apis convivan una estructura definida en el <b><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers">Header</a></b>
-                    la cual se muestra como ejemplo en <a href="#">GitHub</a>:
-                </p>
-                <b>Ejemplo en metodos GET, POST, PUT</b>
-                <p class="code">
-                    {<br/>
-                        &emsp;&emsp;Content-type: "application/json",<br/>
-                        &emsp;&emsp;Accept: "application/json",<br/>
-                        &emsp;&emsp;Authorization: {token: [CLIENT-TOKEN], auth: [PROVIDER-TOKEN]}
-                        <b class="coment">// Opcional agregar un otras credeciales en esta seccion para autentificacion de origen</b>
-
-                    <br/>}
-                </p>
-                <b>Ejemplo en Login (Obtener Token solo metodo POST)</b>
-                <p class="code">
-                    {<br/>
-                        &emsp;&emsp;Content-type: "application/json",<br/>
-                        &emsp;&emsp;Accept: "application/json",<br/>
-                        &emsp;&emsp;Authorization: {user: [USERNAME], key: [API-KEY]}
-
-                    <br/>}
-                </p>
-            </div>
-            <div class="card">
-                <h2>
-                    Integracion
-                </h2>
-                <hr/>
-                <p>
-                    Para una mayor comunicacion entre equipos de desarrollo se podra solicitar 
-                </p>
-            </div>
-        </div>
         </div>
         </div>
     </body>

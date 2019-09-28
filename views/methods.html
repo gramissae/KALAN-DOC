@@ -5,6 +5,28 @@
         body{
             font-family:Calibri;
         }
+        input{
+            border: none;
+            padding: 10px;
+            background: #bbb;
+            border-radius: 20px;
+        }
+        button{
+            box-shadow: 0px 2px 5px #555;
+            font-family: arial;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background: #0072ff;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        button:hover{
+            background: #0062cc;
+        }
         .container{
             
             display: flex;
@@ -89,102 +111,135 @@
             </li>
             </ul>
             <ul class="colorix">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="./methods.html">Catalogo</a></li>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/methods.html">Catalogo</a></li>
                 <li><a href="./post.html">Metodo POST</a></li>
                 <li><a href="./get.html">Metodo GET</a></li>
-                <li><a href="./put.html">Metodo PUT</a></li>
                 <li><a href="https://github.com/gramissae/KALAN-DOC/tree/master">GITHUB</a></li>
             </ul>
         </div>
         <div class="content">
             <div class="box">
-            <div class="card">
-            <h2>
-                Consultas
-            </h2>
-            <hr/>
-            <p>
-                En el siguiente tutorial se explica mediante ejemplos las solicitudes que se proponen a desarrollar 
-                por lo cual sera nesesario colocar los siguientes codigos de ejemplo.
-            </p>
-            <p class="code">
-                <b class="coment">
-                    /* Realizo un ejemplo de solicitud basado en fetch pero es posible usar:
-                    <br/>&emsp;&emsp;- Axios
-                    <br/>&emsp;&emsp;- HttpxmlRequest
-                    <br/>&emsp;&emsp;- JQuery
-                    <br/>*/
-                    <br/>
-                </b>
-                fetch([RUTA A INGRESAR DE API ], {<br/>
-                    &emsp;&emsp;method: [GET, POST, PUT], <b class="coment">// Colocar cualquiera de los tipos de consulta</b><br/>
-                    &emsp;&emsp;headers:
-                <br/>&emsp;})<br/>
-                .then(res => res.json())<br/>
-                .then(data => console.log(data))<br/>
-                .catch(error => console.errror(error))<br/>
-            </p>
-            <p>
-                Se habilitaran todos los servicios REST en el apartado <b>http://[URL]/service/api/[RUTA]</b>
-            </p>
-            </div>
-            <div class="card">
+                <div class="card">
                 <h2>
-                    Requisitos
+                    Catalogo de Rutas
                 </h2>
                 <hr/>
-                <p>
-                    Solicita a tu Apikey para poder comenzar tu ingreso y poder geneara el token dinamico para cada solicitud via API la cualquiera
-                    se te otorgara para agilizar y validad la identidad de cada envio de informacion.
-                </p>
-                <p>Es nesesario tener un desarrollo basado en las con las siguientes caracteristicas:</p>
+                <p>Las siguientes rutas tienen como requisitos la configuracion de encabezados en para poder ser utilizadas</p>
                 <ul>
-                    <li>- JWT - <b>https://jwt.io/</b></li>
-                    <li>- Protocolo de JWT basado en SHA - 256</li>
-                    <li>- Clave de intercambio secreta Otrogada por el cliente (Secret para cruzar autentificacion <b>#Archivo Api.js</b>)</li>
-                    <li>- Metodo de autentificacion local para con arquitectura opitmizada para ApiRest</li>
+                    <li><b>GET</b></li>
+                    <li><br></li>
+                    <li>/api/login_token</li>
+                    <li>/api/travel/[VIAJE]</li>
+                    <li>/api/store/[TIENDA]</li>
                 </ul>
+                <ul>
+                    <li><b>POST</b></li>
+                    <li><br></li>
+                    <li>/api/arrive <b>Propuesta de ruta</b></li>
+                </ul>
+                </div>
             </div>
-            <div class="card">
+            <div class="box">
+                <div class="card">
                 <h2>
-                    Generacion de encabezados
+                    Login Token
                 </h2>
                 <hr/>
+                <p>En el siguiente apartado se muestra la generacion de un token de login para poder realizar consultas en <b>APIRest</b></p>
+                <b>Requisitos</b>
+                    <ul>
+                        <li>- ApiKey</li>
+                        <li>- Token Origen</li>
+                        <li>- (Opcional) Otros metodos de seguridad sugeribles</li>
+                    </ul>
+                <hr>
                 <p>
-                    En cada solicitud es necesario para que nuestras Apis convivan una estructura definida en el <b><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers">Header</a></b>
-                    la cual se muestra como ejemplo en <a href="#">GitHub</a>:
+                    Realizaremos una consulta <a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Utilizando_Fetch">Fetch</a> pero existen varias opciones de consulta
+                    en el cual obtendremos como respuesta un objeto conteniendo nuestras llaves necesarias
                 </p>
-                <b>Ejemplo en metodos GET, POST, PUT</b>
-                <p class="code">
-                    {<br/>
-                        &emsp;&emsp;Content-type: "application/json",<br/>
-                        &emsp;&emsp;Accept: "application/json",<br/>
-                        &emsp;&emsp;Authorization: {token: [CLIENT-TOKEN], auth: [PROVIDER-TOKEN]}
-                        <b class="coment">// Opcional agregar un otras credeciales en esta seccion para autentificacion de origen</b>
+                <b>Ejemplo codigo token</b>
+                <div class="code">
+                    fetch('http://locahost:8080/api/login_token',{<br>
+                        &emsp;&emsp;&emsp;&emsp;method: 'GET',<br>
+                        &emsp;&emsp;&emsp;&emsp;authorization: {user: [nombre], apikey: [apikey]}<br>
+                    })<br>
+                    .then(res => res.json())<br>
+                    .then(data => console.log(data))
+                </div>
+                <hr>
+                <b>Prueba Token</b>
+                    <p>
+                        Apikey(Ej: [0123456789])
+                    </p>
+                    <input id="apikey" placeholder="Ingresa apikey"/>
+                    <p>
+                        Usuario(Ej:[Nombre de Ejemplo])
+                    </p>
+                    <input id="user" placeholder="Ingresa nombre"/>
+                    <br>
+                    <button onclick="getToken()">
+                        Enviar
+                    </button>
+                <script>
+                    function getToken(){
+                        var user = document.getElementById("user").value;
+                        var apikey = document.getElementById("apikey").value;
 
-                    <br/>}
-                </p>
-                <b>Ejemplo en Login (Obtener Token solo metodo POST)</b>
-                <p class="code">
-                    {<br/>
-                        &emsp;&emsp;Content-type: "application/json",<br/>
-                        &emsp;&emsp;Accept: "application/json",<br/>
-                        &emsp;&emsp;Authorization: {user: [USERNAME], key: [API-KEY]}
-
-                    <br/>}
-                </p>
+                        fetch('/api/login_token',{
+                            method: 'GET',
+                            headers: {
+                                authorization:JSON.stringify({user: user, apikey: apikey})
+                            }
+                        })
+                        .then(res => {
+                            document.getElementById("headers").innerHTML =JSON.stringify({url:res.url,status: res.status, statustext: res.statusText});
+                            return res.json()
+                        })
+                        .then(data =>{document.getElementById("response").innerHTML = JSON.stringify(data)})
+                        .catch(error => console.log(error))
+                    }
+                </script>
+                <hr>
+                <b>Respuesta API</b>
+                <div id="response" class="code">
+                    -
+                </div>
+                <b>Respuesta Headers</b>
+                <div id="headers" class="code">
+                    -
+                </div>
+                <hr>
+                <b>Validar Token</b>
+                    <p>
+                        Ingresa el token
+                    </p>
+                    <input id="token" placeholder="Token"/>
+                    <br>
+                    <button onclick="validateToken()">
+                        Enviar
+                    </button>
+                    <p>Posteriror de haber obtenido el token podremos validar si es autentico</p>
+                    <b>Respuesta Validacion</b>
+                    <div id="verify" class="code">
+                        -
+                    </div>
+                    <script>
+                        function validateToken(){
+                            var token = document.getElementById("token").value;
+                            fetch('/api/validate_token',{
+                            method: 'GET',
+                            headers: {
+                                authorization:JSON.stringify({token: token})
+                            }
+                            })
+                            .then(res => res.json())
+                            .then(data =>{document.getElementById("verify").innerHTML = JSON.stringify(data)})
+                            .catch(error => console.log(error))
+                        }
+                    </script>
+                </div>
             </div>
-            <div class="card">
-                <h2>
-                    Integracion
-                </h2>
-                <hr/>
-                <p>
-                    Para una mayor comunicacion entre equipos de desarrollo se podra solicitar 
-                </p>
-            </div>
-        </div>
         </div>
         </div>
     </body>

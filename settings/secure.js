@@ -2,7 +2,7 @@
 //unicamente es un ejemplo explicativo se puede manejar de diferentes maneras
 
 const keys_example = {
-    mykey: 'myexample_key', // Aqui coloca la clave secreta a usar
+    secret: 'myexample_key', // Aqui coloca la clave secreta a usar
     provider_key: 'prettykey' // Aqui ira la clave proporcionada por nosotros
 }
 

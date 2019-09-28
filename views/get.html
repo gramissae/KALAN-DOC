@@ -21,6 +21,28 @@
             width: 1000;
             height: 100%;
         }
+        input{
+            border: none;
+            padding: 10px;
+            background: #bbb;
+            border-radius: 20px;
+        }
+        button{
+            box-shadow: 0px 2px 5px #555;
+            font-family: arial;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background: #0072ff;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        button:hover{
+            background: #0062cc;
+        }
         .card{
             padding: 20px;
             box-shadow: 5px 10px 10px #888;
@@ -93,11 +115,63 @@
                 <li><a href="/methods.html">Catalogo</a></li>
                 <li><a href="./post.html">Metodo POST</a></li>
                 <li><a href="./get.html">Metodo GET</a></li>
-                <li><a href="./put.html">Metodo PUT</a></li>
                 <li><a href="https://github.com/gramissae/KALAN-DOC/tree/master">GITHUB</a></li>
             </ul>
         </div>
         <div class="content">
+                <div class="box">
+                        <div class="card">
+                        <h2>
+                            Ir a "hola bro"
+                        </h2>
+                        <hr/>
+                        <p>
+                            En el siguiente tutorial se explica mediante ejemplos las solicitudes que se proponen a desarrollar 
+                            por lo cual sera nesesario colocar los siguientes codigos de ejemplo.
+                        </p>
+                        <div>
+                            <button onclick="getHellobro()">
+                                Presiona para conectar
+                            </button>
+                            <button onclick="limpiar()">
+                                limpiar
+                            </button>
+                            <br/><br/>
+                            <b>Respuesta API</b>
+                            <div id="hellobro" class="code">
+                                -
+                            </div>
+                            <b>Encabezados API</b>
+                            <div id="headers" class="code">
+                                -
+                            </div>
+                        </div>
+                        </div>
+                        <script>
+                            function getHellobro(){
+                                fetch("http://localhost:8080/api", {
+                                    method: 'GET',
+                                    "Content-type":"application/json"
+                                })
+                                .then(res => {
+                                    document.getElementById("headers").innerHTML = JSON.stringify({url:res.url,status: res.status, statustext: res.statusText});
+                                    return res.json();
+                                })
+                                .then(data => {
+                                    document.getElementById("hellobro").innerHTML = data;
+                                })
+                                .catch(error=> {
+                                    document.getElementById("headers").innerHTML =error;
+                                    console.error(error);
+                                })
+                            }
+
+                            function limpiar(){
+                                document.getElementById("hellobro").innerHTML = "-";
+                                document.getElementById("headers").innerHTML = "-";
+                            }
+                        </script>
+                    </div>
             <div class="box">
             <div class="card">
             <h2>
@@ -105,24 +179,69 @@
             </h2>
             <hr/>
             <p>
-                En el siguiente tutorial se explica mediante ejemplos las solicitudes que se proponen a desarrollar 
-                por lo cual sera nesesario colocar los siguientes codigos de ejemplo.
+               En este ejemplo podremos mostrar un ejemplo de respuesta para consultar cada viaje en la API programado
             </p>
             <div>
-                <form>
-                    <p>Numero de viaje (ej: TCE99990000)</p>
-                    <input type="text" placeholder="Viaje" />
-                    <button>
-                        Enviar
-                    </button>
-                </form>
+                <p>Numero de viaje (ej: TCE123456789)</p>
+                <input id="travel" type="text" placeholder="Viaje" />
+                <button onclick="getTravel()">
+                    Enviar
+                </button>
+                <br>
                 <b>Respuesta API</b>
-                <div>
-
+                <div id="res_travel" class="code">
+                    -
                 </div>
+                <script>
+                function getTravel(){
+                    let travel = document.getElementById("travel").value;
+                    fetch(`/api/travel/${travel}`, {
+                        method: 'GET',
+                        "Content-type":"application/json"
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById("res_travel").innerHTML = JSON.stringify(data);
+                    })
+                    .catch(error=> console.error(error))
+                }
+                </script>
             </div>
             </div>
-            
+            <div class="box">
+                    <div class="card">
+                    <h2>
+                        Consulta Tienda
+                    </h2>
+                    <hr/>
+                    <p>
+                            En este ejemplo podremos mostrar un ejemplo de respuesta para consultar la cantidad de viajes filtrado por tiendas
+                         </p>
+                         <div>
+                             <p>Determinante ó tienda (ej: [1000 , 1001])</p>
+                             <input id="store" type="text" placeholder="Viaje" />
+                             <button onclick="getStore()">
+                                 Enviar
+                             </button>
+                             <br>
+                             <b>Respuesta API</b>
+                             <div id="res_store" class="code">
+                                 -
+                             </div>
+                             <script>
+                             function getStore(){
+                                 let travel = document.getElementById("store").value;
+                                 fetch(`/api/travel/${travel}`, {
+                                     method: 'GET',
+                                     "Content-type":"application/json"
+                                 })
+                                 .then(res => res.json())
+                                 .then(data => {
+                                     document.getElementById("res_store").innerHTML = JSON.stringify(data);
+                                 })
+                                 .catch(error=> console.error(error))
+                             }
+                             </script>
         </div>
         </div>
         </div>
